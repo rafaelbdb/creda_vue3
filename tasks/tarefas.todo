@@ -1,0 +1,87 @@
+Main task:
+    Create an income and expense tracker app, with a login system.
+    Must show the balance, income, expense, and average income and expense per month.
+
+Estimated time (40 hours):
+    4 hours for planning;
+    36 hours for development;
+
+Time Spent:
+    - Planning: 0.5 hours
+    - Ambient config: 0 hours
+    - Development: 7 hours
+
+✄ -----------------------
+Brainstorm:
+    Ambient configuration:
+        [+] PostgreSQL
+        [+] Git/GitHub
+        [+] VueJS3
+
+    Index:
+        [ ] Signup Form
+            [ ] Name
+            [ ] Username
+            [ ] Email
+            [ ] Password @critical => Must be converted to hash before saving
+            [ ] Confirm password
+            [-] @low Permissions (avoiding complexity for now)
+            [ ] Signup button
+            [ ] Login button
+        [ ] Login Form
+            [ ] Email
+            [ ] Password
+            [ ] Login button
+            [ ] Signup button
+        [ ] User Menu
+            [ ] Logout
+            [ ] Change password
+                [ ] Old password
+                [ ] New password
+                [ ] Confirm new password
+            [ ] Delete account
+                [ ] Password
+                [ ] Confirm password
+                [ ] Must logout automatically, returning to login page
+
+    Dashboard:
+        [ ] Balance
+        [ ] Income
+        [ ] Expense
+        [ ] Average income
+        [ ] Average expense
+        [ ] Movements
+            [ ] Create
+                [ ] Date range
+                [ ] Category
+                [ ] Description
+                [ ] Amount
+                [ ] Type (income/expense)
+            [ ] Edit
+            [ ] Delete
+            [ ] List (one filter per column)
+                [ ] Date range
+                [ ] Category
+                [ ] Description
+                [ ] Amount
+                [ ] Type (income/expense)
+    
+    Backend (API):
+        [ ] User
+            [ ] Create
+            [ ] Update
+            [ ] Delete
+            [ ] Login
+            [ ] Logout
+            [ ] Change password
+            [ ] Delete account
+        [ ] Movement
+            [ ] Create
+            [ ] Update
+            [ ] Delete
+            [ ] List
+        [ ] Category
+            [ ] Create
+            [ ] Update
+            [ ] Delete
+            [ ] List

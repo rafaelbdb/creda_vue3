@@ -1,0 +1,95 @@
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  #userMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+
+    li {
+      cursor: pointer;
+    }
+  }
+
+  #dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      text-align: center;
+
+      h2 {
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+
+    #movements {
+      grid-column: 1 / -1;
+
+      #createMovement,
+      #editMovement {
+        border: 1px solid #eee;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        margin-bottom: 1rem;
+
+        h3 {
+          margin-bottom: 0.5rem;
+        }
+
+        input,
+        select {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
