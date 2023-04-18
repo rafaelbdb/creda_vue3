@@ -71,7 +71,7 @@ export default {
     props: ['forms'],
     data() {
         return {
-            validInputs: false,
+            validInputs: validateForm('signupForm'),
             signUp: {
                 name: '',
                 surname: '',
@@ -86,17 +86,6 @@ export default {
         showForm(formName, visible = true) {
             this.forms[formName].visible = visible;
         },
-        validateForm() {
-            let valid = true;
-            let inputs = this.$refs.signupForm.querySelectorAll('input');
-            for (let i = 0; i < inputs.length; i++) {
-                if (inputs[i].value == '') {
-                    valid = false;
-                    break;
-                }
-            }
-            this.validInputs = valid;
-        }
     }
 };
 </script>
