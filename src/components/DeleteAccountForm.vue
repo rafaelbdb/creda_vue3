@@ -1,42 +1,41 @@
 <template>
-    <form
-        method="post"
-        id="deleteAccountForm"
-        ref="deleteAccountForm"
-        v-if="forms['deleteAccount'].visible == true"
-    >
-        <input
-            type="password"
-            name="password"
-            id="password"
-            ref="password"
-            placeholder="Password"
-            required
-            v-model="deleteAccount.password"
-        />
-        <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            ref="confirmPassword"
-            placeholder="Confirm password"
-            required
-            v-model="deleteAccount.confirmPassword"
-        />
-        <button
-            type="submit"
-            value="Delete account"
-            @click="submitDeleteAccount()"
-        ><font-awesome-icon icon="fa-solid fa-user-xmark" /></button>
-        <button
-            type="button"
-            value="Cancel"
-            @click="showForm('deleteAccount', false)"
-        ><font-awesome-icon icon="fa-solid fa-ban" /></button>
-    </form>
+    <Modal>
+        <form
+            id="deleteAccountForm"
+            ref="deleteAccountForm"
+            v-if="forms['deleteAccount'].visible == true"
+            @submit.prevent="submitDeleteAccount()"
+        >
+            <input
+                type="password"
+                name="password"
+                id="password"
+                ref="password"
+                placeholder="Password"
+                required
+                v-model="deleteAccount.password"
+            />
+            <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                ref="confirmPassword"
+                placeholder="Confirm password"
+                required
+                v-model="deleteAccount.confirmPassword"
+            />
+            <button type="submit" value="Delete account">
+                <font-awesome-icon icon="fa-solid fa-user-xmark" />
+            </button>
+            <button type="button" value="Cancel">
+                <font-awesome-icon icon="fa-solid fa-ban" />
+            </button>
+        </form>
+    </Modal>
 </template>
 
 <script>
+import { Modal } from './Modal.vue';
 export default {
     name: 'DeleteAccountForm',
     props: ['forms'],
@@ -46,11 +45,17 @@ export default {
                 password: '',
                 confirmPassword: ''
             }
-        }
+        };
     },
     methods: {
-        showForm(formName, visible = true) {
-            this.forms[formName].visible = visible;
+        submitDeleteAccount() {
+            validateForm(this.$refs.deleteAccountForm);
+            let result;
+            if (result) {
+                this.userLoggedIn = false;
+                this.userName = '';
+                this.showForm('login', 'Account deleted successfully!');
+            }
         }
     }
 };

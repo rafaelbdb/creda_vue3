@@ -1,64 +1,70 @@
 <template>
-    <div id="movementForm" ref="movementForm">
-        <h3>{{ actionType }}</h3>
-        <input
-            type="date"
-            name="date"
-            id="date"
-            ref="date"
-            required
-            v-model="movement.date"
-        />
-        <input
-            type="text"
-            name="category"
-            id="category"
-            ref="category"
-            placeholder="Category"
-            required
-            v-model="movement.category"
-        />
-        <input
-            type="text"
-            name="description"
-            id="description"
-            ref="description"
-            placeholder="Description"
-            required
-            v-model="movement.description"
-        />
-        <input
-            type="number"
-            name="amount"
-            id="amount"
-            ref="amount"
-            placeholder="Amount"
-            required
-            v-model="movement.amount"
-        />
-        <label for="income" class="toggle">
-            <p>Expense&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Income</p>
-        </label>
-        <input
-            type="checkbox"
-            id="income"
-            class="checkbox"
-            value="income"
-        />
-        <button type="submit" value="{{ actionType }}">
-            <font-awesome-icon icon="fa-solid fa-money-bill-transfer" />
-        </button>
-        <button
-            type="button"
-            value="Cancel"
-            @click="showForm('movement', false)"
+    <Modal>
+        <form
+            id="movementForm"
+            ref="movementForm"
+            v-if="forms['movement'].visible == true"
+            @submit.prevent="submitMovement()"
         >
-            <font-awesome-icon icon="fa-solid fa-ban" />
-        </button>
-    </div>
+            <h3>{{ actionType }}</h3>
+            <input
+                type="date"
+                name="date"
+                id="date"
+                ref="date"
+                required
+                v-model="movement.date"
+            />
+            <input
+                type="text"
+                name="category"
+                id="category"
+                ref="category"
+                placeholder="Category"
+                required
+                v-model="movement.category"
+            />
+            <input
+                type="text"
+                name="description"
+                id="description"
+                ref="description"
+                placeholder="Description"
+                required
+                v-model="movement.description"
+            />
+            <input
+                type="number"
+                name="amount"
+                id="amount"
+                ref="amount"
+                placeholder="Amount"
+                required
+                v-model="movement.amount"
+            />
+            <label for="income" class="toggle">
+                <p>
+                    Expense&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Income
+                </p>
+            </label>
+            <input
+                type="checkbox"
+                id="income"
+                class="checkbox"
+                value="income"
+            />
+            <button type="submit" value="{{ actionType }}">
+                <font-awesome-icon icon="fa-solid fa-money-bill-transfer" />
+            </button>
+            <button type="button" value="Cancel">
+                <font-awesome-icon icon="fa-solid fa-ban" />
+            </button>
+        </form>
+    </Modal>
 </template>
 
 <script>
+import { Modal } from './Modal.vue';
 export default {
     name: 'MovementForm',
     props: ['forms', 'actionType'],
@@ -74,8 +80,11 @@ export default {
         };
     },
     methods: {
-        showForm(formName, visible = true) {
-            this.forms[formName].visible = visible;
+        submitMovement() {
+            validateForm(this.$refs.movementForm);
+            this.movement.type = document.getElementById('income').checked;
+            this.$emit('submit-movement', this.movement);
+            this.showForm('movement', false);
         }
     }
 };
