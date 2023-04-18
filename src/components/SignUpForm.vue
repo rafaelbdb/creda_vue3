@@ -1,13 +1,67 @@
 <template>
-    <form action="" method="post" id="signupForm" ref="signupForm" v-if="forms['signUp'].visible == true">
-        <input type="text" name="name" id="name" ref="name" placeholder="Name" />
-        <input type="text" name="surname" id="surname" ref="surname" placeholder="Surname" />
-        <input type="text" name="username" id="username" ref="username" placeholder="Username" />
-        <input type="email" name="email" id="email" ref="email" placeholder="Email" />
-        <input type="password" name="password" id="password" ref="password" placeholder="Password" />
-        <input type="password" name="confirmPassword" id="confirmPassword" ref="confirmPassword" placeholder="Confirm password" />
-        <input type="submit" value="Signup" @click="submitSignUp()" />
-        <input type="button" value="Login" @click="showForm('login')" />
+    <form
+        method="post"
+        id="signupForm"
+        ref="signupForm"
+        v-if="forms['signUp'].visible == true"
+    >
+        <input
+            type="text"
+            name="name"
+            id="name"
+            ref="name"
+            placeholder="Name"
+            required
+            v-model="signUp.name"
+        />
+        <input
+            type="text"
+            name="surname"
+            id="surname"
+            ref="surname"
+            placeholder="Surname"
+            required
+            v-model="signUp.surname"
+        />
+        <input
+            type="text"
+            name="username"
+            id="username"
+            ref="username"
+            placeholder="Username"
+            required
+            v-model="signUp.username"
+        />
+        <input
+            type="email"
+            name="email"
+            id="email"
+            ref="email"
+            placeholder="Email"
+            required
+            v-model="signUp.email"
+        />
+        <input
+            type="password"
+            name="password"
+            id="password"
+            ref="password"
+            placeholder="Password"
+            required
+            v-model="signUp.password"
+        />
+        <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            ref="confirmPassword"
+            placeholder="Confirm password"
+            required
+            v-model="signUp.confirmPassword"
+        />
+        <input type="checkbox" name="acceptTerms" id="acceptTerms" placeholder="Accept terms and conditions" value="termsAccepted" />
+        <button type="submit" value="Signup" :disabled="!validInputs" @click="submitSignUp()"><font-awesome-icon icon="fa-solid fa-user-plus" /></button>
+        <button type="button" value="Login" @click="showForm('login')"><font-awesome-icon icon="fa-solid fa-user-check" /></button>
     </form>
 </template>
 
@@ -15,12 +69,36 @@
 export default {
     name: 'SignUpForm',
     props: ['forms'],
+    data() {
+        return {
+            validInputs: false,
+            signUp: {
+                name: '',
+                surname: '',
+                username: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            }
+        }
+    },
     methods: {
         showForm(formName, visible = true) {
             this.forms[formName].visible = visible;
+        },
+        validateForm() {
+            let valid = true;
+            let inputs = this.$refs.signupForm.querySelectorAll('input');
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value == '') {
+                    valid = false;
+                    break;
+                }
+            }
+            this.validInputs = valid;
         }
     }
-}
+};
 </script>
 
 <style scoped>

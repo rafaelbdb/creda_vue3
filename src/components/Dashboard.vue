@@ -13,36 +13,20 @@
             <h2>Average expense</h2>
             <p>{{ averageExpense }}</p>
         </div>
-        <CreateMovementForm :forms="forms" />
-        <EditMovementForm :forms="forms" />
+        <MovementForm :forms="forms" />
     </div>
 </template>
 
 <script>
-import CreateMovementForm from './CreateMovementForm.vue';
-import EditMovementForm from './EditMovementForm.vue';
+import MovementForm from './MovementForm.vue';
 import MovementsList from './MovementsList.vue';
 
 export default {
-    name: "Dashboard",
-    data() {
-        return {
-            forms: {
-                us: {
-                    visible: true
-                }
-            }
-        };
-    },
+    name: 'Dashboard',
+    props: ['userLoggedIn', 'forms'],
     computed: {
         balance() {
             return this.$store.getters.balance;
-        },
-        income() {
-            return this.$store.getters.income;
-        },
-        expense() {
-            return this.$store.getters.expense;
         },
         averageIncome() {
             return this.$store.getters.averageIncome;
@@ -51,8 +35,8 @@ export default {
             return this.$store.getters.averageExpense;
         }
     },
-    components: { CreateMovementForm, EditMovementForm }
-}
+    components: { MovementsList, MovementForm }
+};
 </script>
 
 <style scoped>

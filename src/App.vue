@@ -5,13 +5,20 @@
     <SignUpForm :forms="forms" />
     <ChangePasswordForm :forms="forms" />
     <DeleteAccountForm :forms="forms" />
-    <Dashboard :userLoggedIn="userLoggedIn"/>
+    <Dashboard :forms="forms" :userLoggedIn="userLoggedIn" />
 </template>
 
 <script>
-import { ChangePasswordForm, Dashboard, DeleteAccountForm, LoginForm, SignUpForm, UserMenu } from './components';
+import {
+    ChangePasswordForm,
+    Dashboard,
+    DeleteAccountForm,
+    LoginForm,
+    SignUpForm,
+    UserMenu
+} from './components';
 
-const defaultTitle = 'Login to your account'
+const defaultTitle = 'Login to your account';
 
 export default {
     name: 'App',
@@ -22,11 +29,15 @@ export default {
             forms: {
                 login: { title: 'Login to your account', visible: true },
                 signUp: { title: 'Sign up for an account', visible: false },
-                changePassword: { title: 'Change your password', visible: false },
+                changePassword: {
+                    title: 'Change your password',
+                    visible: false
+                },
                 deleteAccount: { title: 'Delete your account', visible: false },
+                movement: { title: 'Set movement', visible: false }
             },
-            userName: '',
-        }
+            userName: ''
+        };
     },
     components: {
         ChangePasswordForm,
@@ -41,10 +52,10 @@ export default {
 
 <style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
 }
 </style>

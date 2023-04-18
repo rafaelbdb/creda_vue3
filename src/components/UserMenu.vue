@@ -1,8 +1,8 @@
 <template>
     <menu type="context" id="userMenu" ref="userMenu">
-        <li id="menuLogout" ref="menuLogout" @click="showForm('login')">Logout</li>
-        <li id="changePassword" ref="changePassword" @click="showForm('changePassword')">Change password</li>
-        <li id="deleteAccount" ref="deleteAccount" @click="showForm('deleteAccount')">Delete account</li>
+        <li id="menuLogout" ref="menuLogout" @click="showForm('login')"><font-awesome-icon icon="fa-solid fa-user-slash" /></li>
+        <li id="changePassword" ref="changePassword" @click="showForm('changePassword')"><font-awesome-icon icon="fa-solid fa-user-lock" /></li>
+        <li id="deleteAccount" ref="deleteAccount" @click="showForm('deleteAccount')"><font-awesome-icon icon="fa-solid fa-user-minus" /></li>
     </menu>
 </template>
 
