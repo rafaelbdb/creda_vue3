@@ -53,10 +53,10 @@
                 class="checkbox"
                 value="income"
             />
-            <button type="submit" value="{{ actionType }}">
+            <button type="submit" class="btn btn-primary" value="{{ actionType }}">
                 <font-awesome-icon icon="fa-solid fa-money-bill-transfer" />
             </button>
-            <button type="button" value="Cancel">
+            <button type="button" class="btn btn-warning" value="Cancel">
                 <font-awesome-icon icon="fa-solid fa-ban" />
             </button>
         </form>

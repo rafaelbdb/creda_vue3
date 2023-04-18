@@ -24,10 +24,10 @@
                 required
                 v-model="login.password"
             />
-            <button type="submit" value="Login">
+            <button type="submit" class="btn btn-primary" value="Login">
                 <font-awesome-icon icon="fa-solid fa-user-check" />
             </button>
-            <button type="button" value="Signup" @click="showForm('signUp')">
+            <button type="button" class="btn btn-warning" value="Signup" @click="showForm('signUp')">
                 <font-awesome-icon icon="fa-solid fa-user-plus" />
             </button>
         </form>

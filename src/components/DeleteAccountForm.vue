@@ -24,10 +24,10 @@
                 required
                 v-model="deleteAccount.confirmPassword"
             />
-            <button type="submit" value="Delete account">
+            <button type="submit" class="btn btn-danger" value="Delete account">
                 <font-awesome-icon icon="fa-solid fa-user-xmark" />
             </button>
-            <button type="button" value="Cancel">
+            <button type="button" class="btn btn-warning" value="Cancel">
                 <font-awesome-icon icon="fa-solid fa-ban" />
             </button>
         </form>

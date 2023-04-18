@@ -33,10 +33,10 @@
                 required
                 v-model="changePassword.confirmNewPassword"
             />
-            <button type="submit" value="Change password">
+            <button type="submit" class="btn btn-primary" value="Change password">
                 <font-awesome-icon icon="fa-solid fa-key" />
             </button>
-            <button type="button" value="Cancel">
+            <button type="button" class="btn btn-warning" value="Cancel">
                 <font-awesome-icon icon="fa-solid fa-ban" />
             </button>
         </form>

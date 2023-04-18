@@ -67,10 +67,10 @@
                 placeholder="Accept terms and conditions"
                 value="termsAccepted"
             />
-            <button type="submit" value="Signup" :disabled="!validInputs">
+            <button type="submit" class="btn btn-primary" value="Signup" :disabled="!validInputs">
                 <font-awesome-icon icon="fa-solid fa-user-plus" />
             </button>
-            <button type="button" value="Login" @click="showForm('login')">
+            <button type="button" class="btn btn-warning" value="Login" @click="showForm('login')">
                 <font-awesome-icon icon="fa-solid fa-user-check" />
             </button>
         </form>
