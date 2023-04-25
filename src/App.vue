@@ -1,61 +1,35 @@
 <template>
-    <h1 id="pageTitle">{{ pageTitle }}</h1>
-    <UserMenu />
-    <LoginForm :forms="forms" />
-    <SignUpForm :forms="forms" />
-    <ChangePasswordForm :forms="forms" />
-    <DeleteAccountForm :forms="forms" />
-    <Dashboard :forms="forms" :userLoggedIn="userLoggedIn" />
+  <img id="logo" alt="Logo" :src="logo">
+    <router-view />
 </template>
 
 <script>
-import {
-    ChangePasswordForm,
-    Dashboard,
-    DeleteAccountForm,
-    LoginForm,
-    SignUpForm,
-    UserMenu
-} from './components';
-
-const defaultTitle = 'Login to your account';
+import Users from './components/Users.vue';
 
 export default {
     name: 'App',
+    components: {
+        Users
+    },
     data() {
         return {
-            pageTitle: defaultTitle,
-            userLoggedIn: false,
-            forms: {
-                login: { title: 'Login to your account', visible: true },
-                signUp: { title: 'Sign up for an account', visible: false },
-                changePassword: {
-                    title: 'Change your password',
-                    visible: false
-                },
-                deleteAccount: { title: 'Delete your account', visible: false },
-                movement: { title: 'Set movement', visible: false }
-            },
-            userName: ''
-        };
+            logo: require('./assets/logo.png')
+        }
     },
-    components: {
-        ChangePasswordForm,
-        Dashboard,
-        DeleteAccountForm,
-        LoginForm,
-        SignUpForm,
-        UserMenu
-    }
-};
+}
 </script>
 
 <style scoped>
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+#logo {
+  zoom: 30%;
 }
 </style>

@@ -1,0 +1,108 @@
+{
+    "movements": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "date": "2023-04-01",
+            "category_id": 1,
+            "description": "My salary",
+            "amount": 1234.56
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "date": "2023-04-02",
+            "category_id": 4,
+            "description": "Burger King",
+            "amount": 123.45
+        },
+        {
+            "id": 3,
+            "user_id": 1,
+            "date": "2023-04-03",
+            "category_id": 4,
+            "description": "McDonalds",
+            "amount": 234.56
+        },
+        {
+            "id": 4,
+            "user_id": 1,
+            "date": "2023-04-04",
+            "category_id": 6,
+            "description": "Damn fucking government",
+            "amount": 23.45
+        },
+        {
+            "id": 5,
+            "user_id": 2,
+            "date": "2023-05-05",
+            "category_id": 1,
+            "description": "My salary",
+            "amount": 2345.67
+        },
+        {
+            "id": 6,
+            "user_id": 2,
+            "date": "2023-05-06",
+            "category_id": 5,
+            "description": "Uber",
+            "amount": 345.67
+        },
+        {
+            "id": 7,
+            "user_id": 2,
+            "date": "2023-05-07",
+            "category_id": 3,
+            "description": "Mensal fee",
+            "amount": 456.78
+        },
+        {
+            "id": 8,
+            "user_id": 3,
+            "date": "2023-06-01",
+            "category_id": 1,
+            "description": "My salary",
+            "amount": 3456.78
+        },
+        {
+            "id": 7,
+            "user_id": 3,
+            "date": "2023-06-02",
+            "category_id": 2,
+            "description": "Private lessons",
+            "amount": 4567.89
+        },
+        {
+            "id": 8,
+            "user_id": 3,
+            "date": "2023-06-03",
+            "category_id": 3,
+            "description": "Mensal fee",
+            "amount": 567.89
+        },
+        {
+            "id": 9,
+            "user_id": 3,
+            "date": "2023-06-04",
+            "category_id": 4,
+            "description": "Pizza",
+            "amount": 67.89
+        },
+        {
+            "id": 10,
+            "user_id": 3,
+            "date": "2023-06-05",
+            "category_id": 5,
+            "description": "Taxi",
+            "amount": 78.90
+        },
+        {
+            "id": 11,
+            "user_id": 3,
+            "date": "2023-06-05",
+            "category_id": 6,
+            "description": "Assholes",
+            "amount": 89.01
+        }
+    ]
+}

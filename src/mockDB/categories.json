@@ -1,0 +1,46 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Salary",
+            "type": "income",
+            "created_at": "2023-01-04 00:00:00",
+            "updated_at": "2023-02-03 00:00:00"
+        },
+        {
+            "id": 2,
+            "name": "Extra Income",
+            "type": "income",
+            "created_at": "2023-03-02 00:00:00",
+            "updated_at": "2023-04-01 00:00:00"
+        },
+        {
+            "id": 3,
+            "name": "Rent",
+            "type": "expense",
+            "created_at": "2023-05-01 00:00:00",
+            "updated_at": "2023-06-01 00:00:00"
+        },
+        {
+            "id": 4,
+            "name": "Food",
+            "type": "expense",
+            "created_at": "2023-07-02 00:00:00",
+            "updated_at": "2023-08-03 00:00:00"
+        },
+        {
+            "id": 5,
+            "name": "Transport",
+            "type": "expense",
+            "created_at": "2023-09-04 00:00:00",
+            "updated_at": "2023-10-05 00:00:00"
+        },
+        {
+            "id": 6,
+            "name": "Taxes",
+            "type": "expense",
+            "created_at": "2023-11-06 00:00:00",
+            "updated_at": "2023-12-07 00:00:00"
+        }
+    ]
+}
