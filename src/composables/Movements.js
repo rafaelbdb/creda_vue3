@@ -80,15 +80,28 @@ const useMovements = () => {
         }
     };
 
+    const getInitialBalance = async (id) => {
+        errors.value = [];
+        try {
+            const user = await http.get(`/api/users/${id}`);
+            return user.data[0].initial_balance || 0;
+        } catch (error) {
+            console.error(error.message);
+            errors.value = error.user.data.errors || [
+                'Failed to retrieve initial balance'
+            ];
+        }
+    };
+
     const calculateBalance = async () => {
         try {
             return await movements.value.reduce((acc, movement) => {
-                const user = http.get('/api/users/' + movement.user_id);
-                initialBalance.value = user.initial_balance;
+                initialBalance.value = getInitialBalance(movement.user_id);
+                console.warn(initialBalance.value);
                 return movement.type === 'income'
                     ? acc + parseFloat(movement.amount)
                     : acc - parseFloat(movement.amount);
-            }, initialBalance.value || 0);
+            }, initialBalance.value);
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [

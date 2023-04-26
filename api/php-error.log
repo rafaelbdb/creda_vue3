@@ -1,0 +1,53 @@
+[Wed Apr 26 01:40:59.151296 2023] [php:notice] [pid 59674] [client 127.0.0.1:51202] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:17, referer: http://localhost:8080/
+[Wed Apr 26 01:44:44.920759 2023] [mpm_prefork:notice] [pid 1079] AH00170: caught SIGWINCH, shutting down gracefully
+PHP Warning:  PHP Startup: Unable to load dynamic library 'curl' (tried: /usr/lib/php/20210902/curl (/usr/lib/php/20210902/curl: cannot open shared object file: No such file or directory), /usr/lib/php/20210902/curl.so (/usr/lib/php/20210902/curl.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: /usr/lib/php/20210902/mysqli (/usr/lib/php/20210902/mysqli: cannot open shared object file: No such file or directory), /usr/lib/php/20210902/mysqli.so (/usr/lib/php/20210902/mysqli.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+PHP Warning:  PHP Startup: Unable to load dynamic library 'openssl' (tried: /usr/lib/php/20210902/openssl (/usr/lib/php/20210902/openssl: cannot open shared object file: No such file or directory), /usr/lib/php/20210902/openssl.so (/usr/lib/php/20210902/openssl.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_mysql' (tried: /usr/lib/php/20210902/pdo_mysql (/usr/lib/php/20210902/pdo_mysql: cannot open shared object file: No such file or directory), /usr/lib/php/20210902/pdo_mysql.so (/usr/lib/php/20210902/pdo_mysql.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_pgsql' (tried: /usr/lib/php/20210902/pdo_pgsql (/usr/lib/php/20210902/pdo_pgsql: cannot open shared object file: No such file or directory), /usr/lib/php/20210902/pdo_pgsql.so (/usr/lib/php/20210902/pdo_pgsql.so: undefined symbol: pdo_parse_params)) in Unknown on line 0
+PHP Warning:  Module "pgsql" is already loaded in Unknown on line 0
+[Wed Apr 26 07:46:46.327483 2023] [mpm_prefork:notice] [pid 1068] AH00163: Apache/2.4.52 (Ubuntu) mod_wsgi/4.9.0 Python/3.10 configured -- resuming normal operations
+[Wed Apr 26 07:46:46.327535 2023] [core:notice] [pid 1068] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Apr 26 09:08:52.435436 2023] [negotiation:error] [pid 1073] [client 127.0.0.1:53824] AH00687: Negotiation: discovered file(s) matching request: /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users (None could be negotiated).
+[Wed Apr 26 09:09:01.333931 2023] [negotiation:error] [pid 1070] [client 127.0.0.1:47932] AH00687: Negotiation: discovered file(s) matching request: /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users (None could be negotiated).
+[Wed Apr 26 09:09:35.076165 2023] [php:notice] [pid 1071] [client 127.0.0.1:46936] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 7
+[Wed Apr 26 09:09:35.076213 2023] [php:notice] [pid 1071] [client 127.0.0.1:46936] PHP Stack trace:
+[Wed Apr 26 09:09:35.076221 2023] [php:notice] [pid 1071] [client 127.0.0.1:46936] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:09:35.076228 2023] [php:notice] [pid 1071] [client 127.0.0.1:46936] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:10:40.847205 2023] [php:notice] [pid 1072] [client 127.0.0.1:39006] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 7
+[Wed Apr 26 09:10:40.847252 2023] [php:notice] [pid 1072] [client 127.0.0.1:39006] PHP Stack trace:
+[Wed Apr 26 09:10:40.847260 2023] [php:notice] [pid 1072] [client 127.0.0.1:39006] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:10:40.847266 2023] [php:notice] [pid 1072] [client 127.0.0.1:39006] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:11:42.735621 2023] [php:notice] [pid 1073] [client 127.0.0.1:53184] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 7
+[Wed Apr 26 09:11:42.735685 2023] [php:notice] [pid 1073] [client 127.0.0.1:53184] PHP Stack trace:
+[Wed Apr 26 09:11:42.735704 2023] [php:notice] [pid 1073] [client 127.0.0.1:53184] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:11:42.735720 2023] [php:notice] [pid 1073] [client 127.0.0.1:53184] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:14:01.682130 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 7
+[Wed Apr 26 09:14:01.682176 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP Stack trace:
+[Wed Apr 26 09:14:01.682185 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:14:01.682206 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:14:01.682262 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 14
+[Wed Apr 26 09:14:01.682270 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP Stack trace:
+[Wed Apr 26 09:14:01.682278 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:14:01.682285 2023] [php:notice] [pid 1070] [client 127.0.0.1:34234] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:15:34.017920 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 7
+[Wed Apr 26 09:15:34.017957 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP Stack trace:
+[Wed Apr 26 09:15:34.017965 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:15:34.017971 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:15:34.018011 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP Warning:  Undefined array key "ORIG_PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 14
+[Wed Apr 26 09:15:34.018019 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP Stack trace:
+[Wed Apr 26 09:15:34.018024 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:15:34.018030 2023] [php:notice] [pid 1071] [client 127.0.0.1:46498] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:17:43.907046 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 7
+[Wed Apr 26 09:17:43.907088 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP Stack trace:
+[Wed Apr 26 09:17:43.907096 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:17:43.907103 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:17:43.907146 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 14
+[Wed Apr 26 09:17:43.907154 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP Stack trace:
+[Wed Apr 26 09:17:43.907160 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:17:43.907167 2023] [php:notice] [pid 1073] [client 127.0.0.1:37534] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:17:51.528945 2023] [php:notice] [pid 1070] [client 127.0.0.1:52022] PHP Warning:  Undefined array key "PATH_INFO" in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 7
+[Wed Apr 26 09:17:51.528981 2023] [php:notice] [pid 1070] [client 127.0.0.1:52022] PHP Stack trace:
+[Wed Apr 26 09:17:51.528989 2023] [php:notice] [pid 1070] [client 127.0.0.1:52022] PHP   1. {main}() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Wed Apr 26 09:17:51.529013 2023] [php:notice] [pid 1070] [client 127.0.0.1:52022] PHP   2. require_once() /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:11
+[Wed Apr 26 09:57:16.071110 2023] [php:notice] [pid 22373] [client 127.0.0.1:34450] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "AND"\nLINE 1: SELECT * FROM movements  AND user_id = 1\n                                 ^ in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/movements.php:26\nStack trace:\n#0 /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/movements.php(26): PDOStatement->execute()\n#1 /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php(26): require_once('...')\n#2 {main}\n  thrown in /mnt/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/movements.php on line 26, referer: http://localhost:8080/

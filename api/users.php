@@ -11,7 +11,7 @@ $table_name = 'users';
 
 switch ($method) {
     case 'GET':
-        $id = $_GET['id'] ?? null;
+        $id = $request[0] ?? null;
         $sql = "SELECT * FROM $table_name " . ($id ? "WHERE id = ?" : "");
         $stmt = $pdo->prepare($sql);
         $stmt->execute($id ? [$id] : []);

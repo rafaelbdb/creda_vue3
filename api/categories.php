@@ -9,12 +9,20 @@ $input = json_decode(file_get_contents('php://input'), true);
 
 $table_name = 'categories';
 
+
+
+// $loggedUserId = $_SESSION['user_id'];
+$loggedUserId = 1;
+
+
+
+
 switch ($method) {
     case 'GET':
-        $id = $_GET['id'] ?? null;
-        $sql = "SELECT * FROM $table_name " . ($id ? "WHERE id = ?" : "");
+        $id = $request[0] ?? null;
+        $sql = "SELECT * FROM $table_name WHERE user_id = ?" . ($id ? " AND id = ?" : "");
         $stmt = $pdo->prepare($sql);
-        $stmt->execute($id ? [$id] : []);
+        $stmt->execute($id ? [$loggedUserId, $id] : [$loggedUserId]);
         echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         break;
     case 'POST':

@@ -7,14 +7,22 @@ $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $input = json_decode(file_get_contents('php://input'), true);
 
+
+
+// $loggedUserId = $_SESSION['user_id'];
+$loggedUserId = 1;
+
+
+
+
 $table_name = 'movements';
 
 switch ($method) {
     case 'GET':
-        $id = $_GET['id'] ?? null;
-        $sql = "SELECT * FROM $table_name " . ($id ? "WHERE id = ?" : "");
+        $id = $request[0] ?? null;
+        $sql = "SELECT * FROM $table_name WHERE user_id = ?" . ($id ? " AND id = ?" : "");
         $stmt = $pdo->prepare($sql);
-        $stmt->execute($id ? [$id] : []);
+        $stmt->execute($id ? [$loggedUserId, $id] : [$loggedUserId]);
         echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         break;
     case 'POST':
