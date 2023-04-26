@@ -4,12 +4,15 @@
 </template>
 
 <script>
-import Users from './components/Users.vue';
+import { Categories, Home, Movements, Users } from './components';
 
 export default {
     name: 'App',
     components: {
-        Users
+        Users,
+        Categories,
+        Movements,
+        Home
     },
     data() {
         return {

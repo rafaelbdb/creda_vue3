@@ -3,92 +3,92 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import http from '../http-common';
 
-const API_URL = '/api/users';
+const API_URL = '/api/categories';
 
-const useUsers = () => {
-    const user = ref(null);
-    const users = ref([]);
+const useCategories = () => {
+    const category = ref(null);
+    const categories = ref([]);
     const errors = ref([]);
     const router = useRouter();
 
-    const createUser = async (newUserData) => {
+    const createCategory = async (newCategoryData) => {
         errors.value = [];
         try {
-            const response = await http.post(API_URL, newUserData);
+            const response = await http.post(API_URL, newCategoryData);
             console.log(response.data);
-            router.push('/users');
+            router.push('/categories');
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [
-                'Failed to create user'
+                'Failed to create category'
             ];
         }
     };
 
-    const readUsers = async () => {
+    const readCategories = async () => {
         errors.value = [];
         try {
             const response = await http.get(API_URL);
-            users.value = response.data;
-            console.log(users.value);
+            categories.value = response.data;
+            console.log(categories.value);
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [
-                'Failed to retrieve users'
+                'Failed to retrieve categories'
             ];
         }
     };
 
-    const readUser = async (id) => {
+    const readCategory = async (id) => {
         errors.value = [];
         try {
             const response = await http.get(API_URL + `/${id}`);
-            user.value = response.data;
+            category.value = response.data;
             console.log(response.data);
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [
-                'Failed to retrieve user'
+                'Failed to retrieve category'
             ];
         }
     };
 
-    const updateUser = async (id, updatedUserData) => {
+    const updateCategory = async (id, updatedCategoryData) => {
         errors.value = [];
         try {
-            const response = await http.put(API_URL + `/${id}`, updatedUserData);
-            user.value = response.data;
+            const response = await http.put(API_URL + `/${id}`, updatedCategoryData);
+            category.value = response.data;
             console.log(response.data);
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [
-                'Failed to update user'
+                'Failed to update category'
             ];
         }
     };
 
-    const deleteUser = async (id) => {
+    const deleteCategory = async (id) => {
         errors.value = [];
         try {
             await http.delete(API_URL + `/${id}`);
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [
-                'Failed to delete user'
+                'Failed to delete category'
             ];
         }
     };
 
     return {
-        user,
-        users,
+        category,
+        categories,
         errors,
-        createUser,
-        readUsers,
-        readUser,
-        updateUser,
-        deleteUser
+        createCategory,
+        readCategories,
+        readCategory,
+        updateCategory,
+        deleteCategory
     };
 };
 
-export default useUsers;
+export default useCategories;

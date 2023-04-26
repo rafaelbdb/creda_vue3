@@ -1,36 +1,28 @@
 <template>
-    <div id="users">
-        <h1>Users</h1>
-        <button @click="createUser" class="btn btn-primary">
-            <font-awesome-icon :icon="['fas', 'user-plus']" />
+    <div id="categories">
+        <h1>Categories</h1>
+        <button @click="createCagetory" class="btn btn-primary">
+            <font-awesome-icon :icon="['fas', 'square-plus']" />
         </button>
         <table>
             <thead>
                 <tr>
-                    <td>Id</td>
                     <td>Name</td>
-                    <td>Email</td>
-                    <td>Password</td>
-                    <td>Created at</td>
-                    <td>Updated at</td>
+                    <td>Type</td>
                     <td>Actions</td>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="user in users" :key="user.id">
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.password }}</td>
-                    <td>{{ user.created_at }}</td>
-                    <td>{{ user.updated_at }}</td>
+                <tr v-for="category in categories" :key="category.id">
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.type }}</td>
                     <td>
-                        <button @click="updateUser(user.id)" class="btn btn-warning">
-                            <font-awesome-icon :icon="['fas', 'user-pen']" />
+                        <button @click="updateCagetory(category.id)" class="btn btn-warning">
+                            <font-awesome-icon :icon="['fas', 'square-pen']" />
                         </button>
                         &nbsp;
-                        <button @click="deleteUserById(user.id)" class="btn btn-danger">
-                            <font-awesome-icon :icon="['fas', 'user-slash']" />
+                        <button @click="deleteCagetoryById(category.id)" class="btn btn-danger">
+                            <font-awesome-icon :icon="['fas', 'square-minus']" />
                         </button>
                     </td>
                 </tr>
@@ -40,32 +32,32 @@
 </template>
 
 <script>
-import useUsers from '../composables/Users.js';
+import useCategories from '../composables/Categories.js';
 import { onMounted } from 'vue';
 
 export default {
-    name: 'Users',
+    name: 'Categories',
     setup() {
-        const { user, users, errors, createUser, readUsers, readUser, updateUser, deleteUser } = useUsers();
+        const { category, categories, errors, createCagetory, readCategories, readCagetory, updateCagetory, deleteCagetory } = useCategories();
 
         onMounted(() => {
-            readUsers();
+            readCategories();
         });
 
-        const deleteUserById = async (id) => {
+        const deleteCagetoryById = async (id) => {
             try {
                 if (!confirm('Are you sure?')) {
                     return;
                 }
-                await deleteUser(id);
-                await readUsers();
+                await deleteCagetory(id);
+                await readCategories();
             } catch (error) {
                 console.error(error);
             }
         }
 
         return {
-            user, users, errors, createUser, readUsers, readUser, updateUser, deleteUser, deleteUserById
+            category, categories, errors, createCagetory, readCategories, readCagetory, updateCagetory, deleteCagetory, deleteCagetoryById
         }
     },
 }
@@ -73,7 +65,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#users {
+#categories {
   margin: 20px;
   /* font-family: Arial, sans-serif; */
 }
