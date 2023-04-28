@@ -16,7 +16,7 @@ const useUsers = () => {
         try {
             const response = await http.post(API_URL, newUserData);
             console.log(response.data);
-            router.push('/users');
+            router.push('/login');
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [

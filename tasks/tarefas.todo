@@ -9,7 +9,7 @@ Estimated time (40 hours):
 Time Spent:
     - Planning: 1 hours
     - Ambient config: 6 hours
-    - Development: 18 hours
+    - Development: 21 hours
 
 ✄ -----------------------
 Brainstorm:
@@ -48,19 +48,19 @@ Brainstorm:
 
     Index:
         [ ] Login Form
-            [ ] Email
-            [ ] Password
-            [ ] Login button
-            [ ] Signup button
+            [+] Email
+            [+] Password
+            [+] Login button
+            [+] Signup button
         [ ] Signup Form
-            [ ] Name
-            [ ] Email (username will be the part before the @)
-            [ ] Password @critical => Must be converted to hash before saving
-            [ ] Confirm password
-            [ ] Accept terms and conditions
+            [+] Name
+            [+] Email (username will be the part before the @, if necessary)
+            [+] Password @critical => Must be converted to hash before saving
+            [+] Confirm password
+            [+] Accept terms and conditions
             [-] @low Permissions (avoiding complexity for now)
-            [ ] Signup button (must be disabled if any field is invalid)
-            [ ] Login button
+            [+] Signup button (must be disabled if any field is invalid)
+            [+] Login button
         [ ] User Menu
             [ ] Logout
             [ ] Change password

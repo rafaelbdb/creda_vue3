@@ -4,11 +4,13 @@
 </template>
 
 <script>
-import { Categories, Home, Movements, Users } from './components';
+import { Categories, Home, Movements, Users, Login, SignUp } from './components';
 
 export default {
     name: 'App',
     components: {
+        Login,
+        SignUp,
         Users,
         Categories,
         Movements,
