@@ -1,9 +1,9 @@
-// import axios from 'axios';
+import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import http from '../http-common';
+// import http from '../http-common';
 
-const API_URL = '/api/users';
+const API_URL = 'http://creda_vue3/api/users';
 
 const useUsers = () => {
     const user = ref(null);
@@ -14,7 +14,7 @@ const useUsers = () => {
     const createUser = async (newUserData) => {
         errors.value = [];
         try {
-            const response = await http.post(API_URL, newUserData);
+            const response = await axios.post(API_URL, newUserData);
             console.log(response.data);
             router.push('/login');
         } catch (error) {
@@ -28,7 +28,7 @@ const useUsers = () => {
     const readUsers = async () => {
         errors.value = [];
         try {
-            const response = await http.get(API_URL);
+            const response = await axios.get(API_URL);
             users.value = response.data;
             console.log(users.value);
         } catch (error) {
@@ -42,7 +42,7 @@ const useUsers = () => {
     const readUser = async (id) => {
         errors.value = [];
         try {
-            const response = await http.get(API_URL + `/${id}`);
+            const response = await axios.get(API_URL + `/${id}`);
             user.value = response.data;
             console.log(response.data);
         } catch (error) {
@@ -56,7 +56,7 @@ const useUsers = () => {
     const updateUser = async (id, updatedUserData) => {
         errors.value = [];
         try {
-            const response = await http.put(API_URL + `/${id}`, updatedUserData);
+            const response = await axios.put(API_URL + `/${id}`, updatedUserData);
             user.value = response.data;
             console.log(response.data);
         } catch (error) {
@@ -70,7 +70,7 @@ const useUsers = () => {
     const deleteUser = async (id) => {
         errors.value = [];
         try {
-            await http.delete(API_URL + `/${id}`);
+            await axios.delete(API_URL + `/${id}`);
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [

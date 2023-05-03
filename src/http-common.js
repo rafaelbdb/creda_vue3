@@ -1,6 +1,6 @@
 import axios from "axios";
 export default axios.create({
-  baseURL: "http://creda_vue3/",
+  baseURL: "http://localhost:8080/",
   headers: {
     "Content-type": "application/json"
   }

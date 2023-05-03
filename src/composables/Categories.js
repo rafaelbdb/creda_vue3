@@ -1,9 +1,9 @@
-// import axios from 'axios';
+import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import http from '../http-common';
+// import http from '../http-common';
 
-const API_URL = '/api/categories';
+const API_URL = 'http://creda_vue3/api/categories';
 
 const useCategories = () => {
     const category = ref(null);
@@ -14,7 +14,7 @@ const useCategories = () => {
     const createCategory = async (newCategoryData) => {
         errors.value = [];
         try {
-            const response = await http.post(API_URL, newCategoryData);
+            const response = await axios.post(API_URL, newCategoryData);
             console.log(response.data);
             router.push('/categories');
         } catch (error) {
@@ -28,7 +28,7 @@ const useCategories = () => {
     const readCategories = async () => {
         errors.value = [];
         try {
-            const response = await http.get(API_URL);
+            const response = await axios.get(API_URL);
             categories.value = response.data;
             console.log(categories.value);
         } catch (error) {
@@ -42,7 +42,7 @@ const useCategories = () => {
     const readCategory = async (id) => {
         errors.value = [];
         try {
-            const response = await http.get(API_URL + `/${id}`);
+            const response = await axios.get(API_URL + `/${id}`);
             category.value = response.data;
             console.log(response.data);
         } catch (error) {
@@ -56,7 +56,7 @@ const useCategories = () => {
     const updateCategory = async (id, updatedCategoryData) => {
         errors.value = [];
         try {
-            const response = await http.put(API_URL + `/${id}`, updatedCategoryData);
+            const response = await axios.put(API_URL + `/${id}`, updatedCategoryData);
             category.value = response.data;
             console.log(response.data);
         } catch (error) {
@@ -70,7 +70,7 @@ const useCategories = () => {
     const deleteCategory = async (id) => {
         errors.value = [];
         try {
-            await http.delete(API_URL + `/${id}`);
+            await axios.delete(API_URL + `/${id}`);
         } catch (error) {
             console.error(error.message);
             errors.value = error.response.data.errors || [

@@ -58,3 +58,95 @@ Debug:
 ✘ RASCUNHO
 
 
+<VirtualHost *:80>
+    ServerAdmin myUser@gmail.com
+    ServerName myProject
+    DocumentRoot /media/myUser/Workspace/alpha/bravo/charlie/delta/myProject
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    <Directory /media/myUser/Workspace/alpha/bravo/charlie/delta/myProject>
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+        Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DefaultRuntimeDir ${APACHE_RUN_DIR}
+
+PidFile ${APACHE_PID_FILE}
+
+Timeout 300
+
+KeepAlive On
+
+MaxKeepAliveRequests 100
+
+KeepAliveTimeout 5
+
+User ${APACHE_RUN_USER}
+Group ${APACHE_RUN_GROUP}
+
+HostnameLookups Off
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+
+LogLevel warn
+
+IncludeOptional mods-enabled/*.load
+IncludeOptional mods-enabled/*.conf
+
+Include ports.conf
+
+<Directory />
+	Options FollowSymLinks
+	AllowOverride None
+	Require all denied
+</Directory>
+
+<Directory /usr/share>
+	AllowOverride None
+	Require all granted
+</Directory>
+
+<Directory /var/www/>
+	Options Indexes FollowSymLinks
+	AllowOverride None
+	Require all granted
+</Directory>
+
+AccessFileName .htaccess
+
+<FilesMatch "^\.ht">
+	Require all denied
+</FilesMatch>
+
+LogFormat "%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
+LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
+LogFormat "%h %l %u %t \"%r\" %>s %O" common
+LogFormat "%{Referer}i -> %U" referer
+LogFormat "%{User-agent}i" agent
+
+IncludeOptional conf-enabled/*.conf
+
+IncludeOptional sites-enabled/*.conf
+
