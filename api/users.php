@@ -10,72 +10,128 @@ $input = json_decode(file_get_contents('php://input'), true);
 $table_name = 'users';
 $id = $request[0] ?? null;
 
-switch ($method) {
-    case 'GET':
-        $sql = "SELECT * FROM $table_name " . ($id ? "WHERE id = ?" : "");
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute($id ? [$id] : []);
-        echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-        break;
-    case 'POST':
-        $stmt = $pdo->prepare("INSERT INTO $table_name (name, email, password) VALUES (?, ?, ?)");
-        $stmt->execute([$input['name'], $input['email'], $input['password']]);
+try {
+    switch ($method) {
+        case 'GET':
+            $sql = "SELECT * FROM $table_name " . ($id ? "WHERE id = ?" : "");
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($id ? [$id] : []);
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($users) {
+                http_response_code(200);
+                echo json_encode($users);
+            } else {
+                http_response_code(404);
+                echo json_encode(['error' => 'User not found']);
+            }
+            break;
+        case 'POST':
+            if (validateInput($input)) {
+                $stmt = $pdo->prepare("INSERT INTO $table_name (name, email, password) VALUES (?, ?, ?)");
+                $stmt->execute([$input['name'], $input['email'], $input['password']]);
 
-        if ($stmt->rowCount() > 0) {
-            echo json_encode(['message' => 'User created successfully']);
-        } else {
-            echo json_encode(['message' => 'Could not create user']);
-        }
-        break;
-    case 'PUT':
-        $stmt = $pdo->prepare("UPDATE $table_name SET name = ?, email = ?, password = ? WHERE id = ?");
-        $stmt->execute([$input['name'], $input['email'], $input['password'], $id]);
+                if ($stmt->rowCount() > 0) {
+                    http_response_code(200);
+                    echo json_encode(['message' => 'User created successfully']);
+                } else {
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Could not create user']);
+                }
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid input data']);
+            }
+            break;
+        case 'PUT':
+            if (validateInput($input)) {
+                $stmt = $pdo->prepare("UPDATE $table_name SET name = ?, email = ?, password = ? WHERE id = ?");
+                $stmt->execute([$input['name'], $input['email'], $input['password'], $id]);
 
-        if ($stmt->rowCount() > 0) {
-            echo json_encode(['message' => 'User updated successfully']);
-        } else {
-            echo json_encode(['message' => 'No changes were made to the user']);
-        }
-        break;
-    case 'PATCH':
-        $fields = [];
-        $values = [];
+                if ($stmt->rowCount() > 0) {
+                    http_response_code(200);
+                    echo json_encode(['message' => 'User updated successfully']);
+                } else {
+                    http_response_code(500);
+                    echo json_encode(['error' => 'No changes were made to the user']);
+                }
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid input data']);
+            }
+            break;
+        case 'PATCH':
+            $fields = [];
+            $values = [];
 
-        foreach ($input as $field => $value) {
-            $fields[] = "$field = ?";
-            $values[] = $value;
-        }
+            foreach ($input as $field => $value) {
+                $fields[] = "$field = ?";
+                $values[] = $value;
+            }
 
-        $values[] = $id;
+            $values[] = $id;
 
-        $sql = "UPDATE $table_name SET " . implode(', ', $fields) . " WHERE id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute($values);
+            $sql = "UPDATE $table_name SET " . implode(', ', $fields) . " WHERE id = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($values);
 
-        if ($stmt->rowCount() > 0) {
-            echo json_encode(['message' => 'User updated successfully']);
-        } else {
-            echo json_encode(['message' => 'No changes were made to the user']);
-        }
-        break;
-    case 'DELETE':
-        $stmt = $pdo->prepare("DELETE FROM $table_name WHERE id = ?");
-        $stmt->execute([$id]);
+            if ($stmt->rowCount() > 0) {
+                http_response_code(200);
+                echo json_encode(['message' => 'User updated successfully']);
+            } else {
+                http_response_code(500);
+                echo json_encode(['error' => 'No changes were made to the user']);
+            }
+            break;
+        case 'DELETE':
+            if ($id) {
+                $stmt = $pdo->prepare("DELETE FROM $table_name WHERE id = ?");
+                $stmt->execute([$id]);
 
-        if ($stmt->rowCount() > 0) {
-            echo json_encode(['message' => 'User deleted successfully']);
-        } else {
-            echo json_encode(['message' => 'Could not delete user']);
-        }
-        break;
-        // case 'OPTIONS':
-        //     header("Access-Control-Allow-Origin: http://localhost:8080");
-        //     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-        //     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-        //     break;
+                if ($stmt->rowCount() > 0) {
+                    http_response_code(200);
+                    echo json_encode(['message' => 'User deleted successfully']);
+                } else {
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Could not delete user']);
+                }
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid ID']);
+            }
+            break;
 
-    default:
-        http_response_code(405);
-        echo json_encode(['error' => 'Method not allowed']);
-        break;
+        default:
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+            break;
+    }
+} catch (\Throwable $th) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Internal server error']);
+    error_log($th->getMessage());
+}
+
+function validateInput($input)
+{
+    // Check if required fields are present
+    if (!isset($input['name']) || !isset($input['email']) || !isset($input['password'])) {
+        return false;
+    }
+
+    // Validate name field
+    if (empty($input['name'])) {
+        return false;
+    }
+
+    // Validate email field
+    if (!filter_var($input['email'], FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+
+    // Validate password field
+    if (strlen($input['password']) < 8) {
+        return false;
+    }
+
+    return true;
 }
