@@ -37,6 +37,7 @@ const routes = [
                 'GET': 'readUsers, readUser',
                 'POST': 'createUser',
                 'PUT': 'updateUser',
+                'PATCH': 'updateUser',
                 'DELETE': 'deleteUser',
             },
         }
@@ -51,6 +52,7 @@ const routes = [
                 'GET': 'readCategories, readCategory',
                 'POST': 'createCategory',
                 'PUT': 'updateCategory',
+                'PATCH': 'updateCategory',
                 'DELETE': 'deleteCategory',
             },
         }
@@ -65,6 +67,7 @@ const routes = [
                 'GET': 'readMovements, readMovement',
                 'POST': 'createMovement',
                 'PUT': 'updateMovement',
+                'PATCH': 'updateMovement',
                 'DELETE': 'deleteMovement',
             },
         }

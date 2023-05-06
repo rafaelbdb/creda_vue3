@@ -1,0 +1,4 @@
+[Sat May 06 00:35:38.008709 2023] [php:notice] [pid 11186] [client 127.0.0.1:58364] PHP Warning:  Undefined variable $id in /media/borjovsky/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/users.php on line 40
+[Sat May 06 00:35:38.008817 2023] [php:notice] [pid 11186] [client 127.0.0.1:58364] PHP Stack trace:
+[Sat May 06 00:35:38.008840 2023] [php:notice] [pid 11186] [client 127.0.0.1:58364] PHP   1. {main}() /media/borjovsky/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:0
+[Sat May 06 00:35:38.008859 2023] [php:notice] [pid 11186] [client 127.0.0.1:58364] PHP   2. require_once() /media/borjovsky/Workspace/EstudosDEV/AutoDesafios/JavaScript/Vue/creda_vue3/api/index.php:18
