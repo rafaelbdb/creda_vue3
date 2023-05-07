@@ -3,6 +3,9 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/connection.php';
 
+session_start();
+header('Content-Type: application/json');
+
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $input = json_decode(file_get_contents('php://input'), true);
@@ -27,11 +30,12 @@ try {
             break;
         case 'POST':
             if (validateInput($input)) {
+                $hashedPassword = password_hash($input['password'], PASSWORD_BCRYPT);
                 $stmt = $pdo->prepare("INSERT INTO $table_name (name, email, password) VALUES (?, ?, ?)");
-                $stmt->execute([$input['name'], $input['email'], $input['password']]);
+                $stmt->execute([$input['name'], $input['email'], $hashedPassword]);
 
                 if ($stmt->rowCount() > 0) {
-                    http_response_code(200);
+                    http_response_code(201);
                     echo json_encode(['message' => 'User created successfully']);
                 } else {
                     http_response_code(500);
@@ -44,8 +48,9 @@ try {
             break;
         case 'PUT':
             if (validateInput($input)) {
+                $hashedPassword = password_hash($input['password'], PASSWORD_BCRYPT);
                 $stmt = $pdo->prepare("UPDATE $table_name SET name = ?, email = ?, password = ? WHERE id = ?");
-                $stmt->execute([$input['name'], $input['email'], $input['password'], $id]);
+                $stmt->execute([$input['name'], $input['email'], $hashedPassword, $id]);
 
                 if ($stmt->rowCount() > 0) {
                     http_response_code(200);
@@ -69,6 +74,7 @@ try {
             }
 
             $values[] = $id;
+            $values['password'] = password_hash($values['password'], PASSWORD_BCRYPT);
 
             $sql = "UPDATE $table_name SET " . implode(', ', $fields) . " WHERE id = ?";
             $stmt = $pdo->prepare($sql);

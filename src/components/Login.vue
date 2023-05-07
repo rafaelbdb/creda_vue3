@@ -1,89 +1,113 @@
 <template>
-    <div class="login-form">
-      <h2>Login</h2>
-      <form @submit.prevent="handleSubmit">
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" required>
-          <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" required>
-          <button type="submit">Login</button>
-          <button @click="handleSignupClick">Sign up</button>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'LoginForm',
-    data() {
-      return {
-        email: '',
-        password: ''
+  <div class="login-form">
+    <h2>Login</h2>
+    <form @submit.prevent="handleSubmit">
+      <label for="email">Email:</label>
+      <input type="email" id="email" v-model="email" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" v-model="password" required />
+      <button type="submit">Login</button>
+      <button @click="handleSignupClick">Sign up</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+  name: "LoginForm",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    handleSubmit() {
+      // Validate the form inputs
+      if (!this.email || !this.password) {
+        alert("Please fill in all fields");
+        return;
       }
+
+      // Perform an asynchronous request to the server
+      // Here, you can use a library like Axios to make an HTTP request
+      // to your backend API and handle the response accordingly
+      axios
+        .post("http://creda_vue3/api/login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => response.json)
+        .then((data) => {
+          // Handle the successful login response
+          console.log("Login successful");
+          console.log(data);
+          // Redirect the user to the dashboard or home page
+          this.$router.push("/movements");
+        })
+        .catch((error) => {
+          // Handle any errors or failed login attempts
+          console.error("Login failed:", error);
+          alert("Login failed. Please try again.");
+        });
     },
-    methods: {
-      handleSubmit() {
-        // Handle login logic here
-        console.log('Login form submitted')
-      },
-      handleSignupClick() {
-        this.$router.push('/signup');
-      }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  .login-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-    }
+  },
+  handleSignupClick() {
+    this.$router.push("/signup");
+  },
+};
+</script>
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f1f1f1;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    margin: 0 auto;
-    }
+<style scoped>
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
-    label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    }
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 0 auto;
+}
 
-    input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    }
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
-    button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    width: 100%;
-    }
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    button:hover {
-    background-color: #3e8e41;
-    }
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
 
-  </style>
-  
+button:hover {
+  background-color: #3e8e41;
+}
+</style>

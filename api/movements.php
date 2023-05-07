@@ -3,14 +3,18 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/connection.php';
 
+session_start();
+header('Content-Type: application/json');
+
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $input = json_decode(file_get_contents('php://input'), true);
 
 
 
-// $loggedUserId = $_SESSION['user_id'];
-$loggedUserId = 1;
+$loggedUserId = $_SESSION['user_id'];
+// $loggedUserId = 1;
+var_export($loggedUserId);
 
 
 
@@ -39,7 +43,7 @@ try {
                 $stmt->execute([$loggedUserId, $input['date'], $input['category_id'], $input['description'], $input['amount']]);
 
                 if ($stmt->rowCount() > 0) {
-                    http_response_code(200);
+                    http_response_code(201);
                     echo json_encode(['message' => 'Movement created successfully']);
                 } else {
                     http_response_code(500);
