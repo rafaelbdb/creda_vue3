@@ -9,15 +9,7 @@ header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $input = json_decode(file_get_contents('php://input'), true);
-
-
-
 $loggedUserId = $_SESSION['user_id'];
-// $loggedUserId = 1;
-var_export($loggedUserId);
-
-
-
 
 $table_name = 'movements';
 $id = $request[0] ?? null;

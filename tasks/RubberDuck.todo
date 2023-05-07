@@ -16,9 +16,7 @@ Passo 3:
 
 ✄ -----------------------
 Descrição suscinta do problema:
-    [-] Há um erro fundamental! - A listagem deveria ser filtrada apenas para o usuário que está LOGADO!!
-    [ ] Preciso criar um sistema de Login pra funcionar corretamente
-    [ ] API não encontra o caminho para CREATE USER
+    [-] 
 
 Pistas e outros detalhes:
     [ ] 

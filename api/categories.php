@@ -11,14 +11,7 @@ $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $input = json_decode(file_get_contents('php://input'), true);
 
 $table_name = 'categories';
-
-
-
 $loggedUserId = $_SESSION['user_id'];
-// $loggedUserId = 1;
-
-
-
 $id = $request[0] ?? null;
 
 try {
