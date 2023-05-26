@@ -1,20 +1,26 @@
 <template>
-    <div id="home">
-        <h1>{{ title }}</h1>
-        <p>{{ description }}</p>
-    </div>
+  <div id="home">
+    <h1>{{ title }}</h1>
+    <p v-html="formattedDescription"></p>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'Home',
-    data() {
-        return {
-            title: 'Home Page',
-            description: 'Welcome! Please login or signup to continue.'
-        }
+  name: "Home",
+  data() {
+    return {
+      title: "Home Page",
+      description:
+        "Welcome! Please <a href='/login'>login</a> or <a href='/signup'>signup</a> to continue.",
+    };
+  },
+  computed: {
+    formattedDescription() {
+      return this.description;
     },
-}
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

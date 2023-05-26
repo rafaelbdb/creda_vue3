@@ -1,10 +1,10 @@
 <?php
+session_start();
+
+header('Content-Type: application/json');
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/connection.php';
-
-session_start();
-header('Content-Type: application/json');
+require_once __DIR__ . '/connection.php'; //PHP_SESSION_ACTIVE
 
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
@@ -18,19 +18,19 @@ try {
             $password = $input['password'];
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-            $sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+            $sql = "SELECT * FROM users WHERE email = ?";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$email, $password]);
+            $stmt->execute([$email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($user) {
-                // WARNING: This is not secure, do not use in production
-                if (!password_verify($user['password'], $hashedPassword)) {
+                if (!password_verify($password, $user['password'])) {
                     http_response_code(400);
                     echo json_encode(['error' => 'Wrong password']);
+                    exit;
                 }
                 $_SESSION['user_id'] = $user['id'];
                 http_response_code(200);
-                echo json_encode(['message' => 'Welcome!']);
+                echo json_encode(['message' => 'Welcome ' . $user['name'] . '!']);
             } else {
                 http_response_code(404);
                 echo json_encode(['error' => 'User not found']);

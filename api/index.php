@@ -1,9 +1,9 @@
 <?php
+// session_start();
 
 header("Content-Type: application/json");
 
 require_once __DIR__ . '/../vendor/autoload.php';
-session_start();
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
@@ -17,7 +17,6 @@ try {
             $resource = array_shift($request);
             switch ($resource) {
                 case 'users':
-                    $_SERVER['PATH_INFO'] = '/' . implode('/', $request);
                     require_once __DIR__ . '/users.php';
                     break;
                 case 'categories':
@@ -31,6 +30,10 @@ try {
                 case 'login':
                     $_SERVER['PATH_INFO'] = '/' . implode('/', $request);
                     require_once __DIR__ . '/login.php';
+                    break;
+                case 'auth':
+                    $_SERVER['PATH_INFO'] = '/' . implode('/', $request);
+                    require_once __DIR__ . '/auth.php';
                     break;
                 default:
                     http_response_code(404);

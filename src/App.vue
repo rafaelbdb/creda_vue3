@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { Categories, Home, Movements, Users, Login, SignUp } from './components';
+import { Categories, Home, Movements, Users, Login, SignUp, Auth } from './components';
 
 export default {
     name: 'App',
@@ -14,7 +14,8 @@ export default {
         Users,
         Categories,
         Movements,
-        Home
+        Home,
+        Auth
     },
     data() {
         return {

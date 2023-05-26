@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import {
+    Auth,
     Categories,
     Home,
-    Movements,
-    Users,
     Login,
+    Movements,
     SignUp,
+    Users,
 } from '../components';
 
 const routes = [
@@ -15,6 +16,12 @@ const routes = [
         alias: ['/home', '/index'], // multiple paths point to the same component
         component: Home,
         // props: true,
+    },
+    {
+        path: '/auth',
+        name: 'Auth',
+        component: Auth,
+        meta: { requiresAuth: true }
     },
     {
         path: '/login',
@@ -78,6 +85,14 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth && !to.auth) {
+        next('/login');
+    } else {
+        next();
+    }
 });
 
 export default router;

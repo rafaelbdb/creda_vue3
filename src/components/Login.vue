@@ -26,25 +26,20 @@ export default {
     handleSubmit() {
       // Validate the form inputs
       if (!this.email || !this.password) {
-        alert("Please fill in all fields");
-        return;
+          alert("Please fill in all fields");
+          return;
       }
 
-      // Perform an asynchronous request to the server
-      // Here, you can use a library like Axios to make an HTTP request
-      // to your backend API and handle the response accordingly
       axios
         .post("http://creda_vue3/api/login", {
           email: this.email,
           password: this.password,
         })
-        .then((response) => response.json)
-        .then((data) => {
-          // Handle the successful login response
-          console.log("Login successful");
-          console.log(data);
-          // Redirect the user to the dashboard or home page
+        .then((response) => {
+          console.info("Login successful");
+        //   console.log(`User data => ${response.data}`);
           this.$router.push("/movements");
+        //   this.$router.push("/auth");
         })
         .catch((error) => {
           // Handle any errors or failed login attempts

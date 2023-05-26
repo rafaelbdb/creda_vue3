@@ -29,6 +29,7 @@ const useMovements = () => {
     const readMovements = async () => {
         errors.value = [];
         try {
+            // const response = await axios.get(API_URL, { withCredentials: true });
             const response = await axios.get(API_URL);
             movements.value = response.data;
             console.log(movements.value);

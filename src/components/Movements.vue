@@ -45,13 +45,25 @@
 </template>
 
 <script>
-import { onMounted } from 'vue';
-import useMovements from '../composables/Movements.js';
+import { onMounted } from "vue";
+import useMovements from "../composables/Movements.js";
 
 export default {
-    name: 'Movements',
+    name: "Movements",
     setup() {
-        const { movement, movements, errors, createMovement, readMovements, readMovement, updateMovement, deleteMovement, calculateBalance, calculateAvgIncome, calculateAvgExpense } = useMovements();
+        const {
+            movement,
+            movements,
+            errors,
+            createMovement,
+            readMovements,
+            readMovement,
+            updateMovement,
+            deleteMovement,
+            calculateBalance,
+            calculateAvgIncome,
+            calculateAvgExpense,
+        } = useMovements();
 
         let balance = 0;
         let avgIncome = 0;
@@ -67,7 +79,7 @@ export default {
 
         const deleteMovementById = async (id) => {
             try {
-                if (!confirm('Are you sure?')) {
+                if (!confirm("Are you sure?")) {
                     return;
                 }
                 await deleteMovement(id);
@@ -75,46 +87,60 @@ export default {
             } catch (error) {
                 console.error(error);
             }
-        }
+        };
 
         return {
-            avgExpense, avgIncome, balance, movement, movements, errors, createMovement, readMovements, readMovement, updateMovement, deleteMovement, calculateBalance, calculateAvgIncome, calculateAvgExpense, deleteMovementById
-        }
+            avgExpense,
+            avgIncome,
+            balance,
+            movement,
+            movements,
+            errors,
+            createMovement,
+            readMovements,
+            readMovement,
+            updateMovement,
+            deleteMovement,
+            calculateBalance,
+            calculateAvgIncome,
+            calculateAvgExpense,
+            deleteMovementById,
+        };
     },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #movements {
-  margin: 20px;
-  /* font-family: Arial, sans-serif; */
+    margin: 20px;
+    /* font-family: Arial, sans-serif; */
 }
 
 h1 {
-  /* font-size: 28px; */
-  text-align: center;
-  margin-bottom: 20px;
+    /* font-size: 28px; */
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 thead {
-  background-color: #343a40;
-  color: #fff;
+    background-color: #343a40;
+    color: #fff;
 }
 
 td {
-  padding: 10px;
-  border: 1px solid #dee2e6;
+    padding: 10px;
+    border: 1px solid #dee2e6;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #f8f9fa;
+    background-color: #f8f9fa;
 }
 
 /* .btn {

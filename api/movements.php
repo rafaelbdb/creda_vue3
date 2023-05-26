@@ -1,15 +1,22 @@
 <?php
+// session_start();
+
+header('Content-Type: application/json');
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/connection.php';
 
-session_start();
-header('Content-Type: application/json');
+$loggedUserId = $_SESSION['user_id']; // NULL
+
+if (!$loggedUserId) {
+    http_response_code(401);
+    echo json_encode(['error' => 'User not logged in']);
+    exit;
+}
 
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $input = json_decode(file_get_contents('php://input'), true);
-$loggedUserId = $_SESSION['user_id'];
 
 $table_name = 'movements';
 $id = $request[0] ?? null;
@@ -20,10 +27,10 @@ try {
             $sql = "SELECT * FROM $table_name WHERE user_id = ?" . ($id ? " AND id = ?" : "");
             $stmt = $pdo->prepare($sql);
             $stmt->execute($id ? [$loggedUserId, $id] : [$loggedUserId]);
-            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if ($users) {
+            $movements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($movements) {
                 http_response_code(200);
-                echo json_encode($users);
+                echo json_encode($movements);
             } else {
                 http_response_code(404);
                 echo json_encode(['error' => 'Movement not found']);
